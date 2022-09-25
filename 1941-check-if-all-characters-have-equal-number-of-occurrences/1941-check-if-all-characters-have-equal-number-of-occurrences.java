@@ -1,15 +1,18 @@
 class Solution {
     public boolean areOccurrencesEqual(String s) {
-        HashMap<Character, Integer> map = new HashMap<>();
+
+        int[] charArray = new int[26];
 
         for(Character c: s.toCharArray()){
-            map.computeIfPresent(c, (key, val) -> val + 1);
-            map.computeIfAbsent(c, (key) -> 1);
+            charArray[c - 'a']++;
         }
 
-        Set<Integer> values = new HashSet<Integer>(map.values());
-        boolean isUnique = values.size() == 1;
+        for(int i = 1; i < 26; i++){
+            if(charArray[i] != charArray[s.charAt(0) - 'a'] && charArray[i] != 0){
+                return false;
+            }
+        }
 
-        return isUnique;
+        return true;
     }
 }
