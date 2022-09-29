@@ -9,8 +9,6 @@ class Solution {
         for (int i = 2; i * i < num; i++) {
             if (num % i == 0) {
                 sum = sum + i + num / i;
-                if (sum > num)
-                    return false;
             }
         }
 
